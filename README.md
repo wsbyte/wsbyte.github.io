@@ -89,8 +89,6 @@ Cloud：阿里云/UCloud/七牛/AWS SQS/微信公众号/支付宝服务窗
 ## 致谢
 感谢您花时间阅读我的简历，期待能有机会和您共事。
 
-
-
 ---
 
-# [PDF](https://gitprint.com/ws89/ws89.github.io/blob/master/README.md)
+# [PDF](https://gitprint.com/ws89/ws89.github.io/blob/master/resume.md)
