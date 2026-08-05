@@ -1,211 +1,850 @@
 <!doctype html>
-<html>
-<head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title></title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}html { font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { background: rgb(181, 214, 252); text-shadow: none; }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: auto; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-.typora-export #write { margin: 0px auto; }
-#write > p:first-child, #write > ul:first-child, #write > ol:first-child, #write > pre:first-child, #write > blockquote:first-child, #write > div:first-child, #write > table:first-child { margin-top: 30px; }
-#write li > table:first-child { margin-top: -20px; }
-img { max-width: 100%; vertical-align: middle; }
-input, button, select, textarea { color: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-::before, ::after, * { box-sizing: border-box; }
-#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write div, #write pre { width: inherit; }
-#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6 { position: relative; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
-.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0rem; -webkit-margin-after: 0rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
-a { cursor: pointer; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 80px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-pre { white-space: pre-wrap; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-.md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
-.md-fences.mock-cm { white-space: pre-wrap; }
-.show-fences-line-number .md-fences { padding-left: 0px; }
-.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
-.footnotes + .footnotes { margin-top: -1em; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: transparent; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li p, li .mathjax-block { margin: 0.5rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
-@media print {
-  html, body { height: 100%; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  h1, h2, h3, h4, h5, h6 { break-after: avoid-page; orphans: 2; }
-  p { orphans: 4; }
-  html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 1cm; padding-right: 1cm; }
-  .typora-export #write::after { height: 0px; }
-  @page { margin: 20mm 0mm; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
-p + .mathjax-block { margin-top: -1.143rem; }
-.mathjax-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: none; box-shadow: none; }
-.task-list { list-style-type: none; }
-.task-list-item { position: relative; padding-left: 1em; }
-.task-list-item input { position: absolute; top: 0px; left: 0px; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc::after, .md-toc-content::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
-.md-toc-inner:hover { }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-.md-tag { opacity: 0.5; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: monospace; }
-code { text-align: left; }
-h1 .md-tag, h2 .md-tag, h3 .md-tag, h4 .md-tag, h5 .md-tag, h6 .md-tag { font-weight: initial; opacity: 0.35; }
-a.md-print-anchor { border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: none !important; background: transparent !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0em; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: monospace; }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: normal; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none; }
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="data:," />
+    <title>投递版简历</title>
+    <style>
+      :root {
+        --canvas: #eee9df;
+        --paper: #fffdf8;
+        --paper-soft: #fbf7ee;
+        --ink: #292722;
+        --body: #5c5952;
+        --muted: #817c72;
+        --line: #dfd6c7;
+        --line-soft: #eee8dc;
+        --accent: #b77a1d;
+        --accent-deep: #80510e;
+        --accent-wash: #f7ead0;
+        --serif: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
+        --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      }
 
+      * {
+        box-sizing: border-box;
+      }
 
-@font-face { font-family: "Open Sans"; font-style: normal; font-weight: normal; src: local("Open Sans Regular"), url("./github/400.woff") format("woff"); }
-@font-face { font-family: "Open Sans"; font-style: italic; font-weight: normal; src: local("Open Sans Italic"), url("./github/400i.woff") format("woff"); }
-@font-face { font-family: "Open Sans"; font-style: normal; font-weight: bold; src: local("Open Sans Bold"), url("./github/700.woff") format("woff"); }
-@font-face { font-family: "Open Sans"; font-style: italic; font-weight: bold; src: local("Open Sans Bold Italic"), url("./github/700i.woff") format("woff"); }
-html { font-size: 16px; }
-body { font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); line-height: 1.6; }
-#write { max-width: 860px; margin: 0px auto; padding: 20px 30px 100px; }
-#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
-body > :first-child { margin-top: 0px !important; }
-body > :last-child { margin-bottom: 0px !important; }
-a { color: rgb(65, 131, 196); }
-h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
-h1 tt, h1 code { font-size: inherit; }
-h2 tt, h2 code { font-size: inherit; }
-h3 tt, h3 code { font-size: inherit; }
-h4 tt, h4 code { font-size: inherit; }
-h5 tt, h5 code { font-size: inherit; }
-h6 tt, h6 code { font-size: inherit; }
-h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
-h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
-h3 { font-size: 1.5em; line-height: 1.43; }
-h4 { font-size: 1.25em; }
-h5 { font-size: 1em; }
-h6 { font-size: 1em; color: rgb(119, 119, 119); }
-p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
-li > ol, li > ul { margin: 0px; }
-hr { height: 4px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border-width: 0px 0px 1px; border-style: none none solid; border-top-color: initial; border-right-color: initial; border-left-color: initial; border-image: initial; overflow: hidden; box-sizing: content-box; border-bottom-color: rgb(221, 221, 221); }
-body > h2:first-child { margin-top: 0px; padding-top: 0px; }
-body > h1:first-child { margin-top: 0px; padding-top: 0px; }
-body > h1:first-child + h2 { margin-top: 0px; padding-top: 0px; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0px; }
-li p.first { display: inline-block; }
-ul, ol { padding-left: 30px; }
-ul:first-child, ol:first-child { margin-top: 0px; }
-ul:last-child, ol:last-child { margin-bottom: 0px; }
-blockquote { border-left: 4px solid rgb(221, 221, 221); padding: 0px 15px; color: rgb(119, 119, 119); }
-blockquote blockquote { padding-right: 0px; }
-table { padding: 0px; word-break: initial; }
-table tr { border-top: 1px solid rgb(204, 204, 204); background-color: white; margin: 0px; padding: 0px; }
-table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
-table tr th { font-weight: bold; border: 1px solid rgb(204, 204, 204); text-align: left; margin: 0px; padding: 6px 13px; }
-table tr td { border: 1px solid rgb(204, 204, 204); text-align: left; margin: 0px; padding: 6px 13px; }
-table tr th:first-child, table tr td:first-child { margin-top: 0px; }
-table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); }
-.md-fences, code, tt { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 4px 0px; font-size: 0.9em; }
-.md-fences { margin-bottom: 15px; margin-top: 15px; padding: 8px 1em 6px; }
-.task-list { padding-left: 0px; }
-.task-list-item { padding-left: 32px; }
-.task-list-item input { top: 3px; left: 8px; }
-@media screen and (min-width: 914px) {
-}
-@media print {
-  html { font-size: 13px; }
-  table, pre { break-inside: avoid; }
-  pre { word-wrap: break-word; }
-}
-.md-fences { background-color: rgb(248, 248, 248); }
-#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
-.mathjax-block > .code-tooltip { bottom: 0.375rem; }
-#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
-#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-.md-image > .md-meta { border: 1px solid rgb(221, 221, 221); border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 4px 0px; font-size: 0.9em; color: inherit; }
-.md-tag { color: inherit; }
-.md-toc { margin-top: 20px; padding-bottom: 20px; }
-#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
-#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
-#md-notification::before { top: 10px; }
-.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.117647); }
-header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+      html {
+        background: var(--canvas);
+      }
 
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--body);
+        background:
+          radial-gradient(circle at 12% 2%, rgba(199, 145, 54, 0.16), transparent 28rem),
+          var(--canvas);
+        font-family: var(--sans);
+        font-size: 14px;
+        line-height: 1.68;
+        -webkit-font-smoothing: antialiased;
+      }
 
+      button {
+        font: inherit;
+      }
 
+      .print-button {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 10;
+        align-items: baseline;
+        min-height: 34px;
+        padding: 0 16px;
+        color: #fffdf8;
+        background: var(--accent-deep);
+        border: 1px solid rgba(255, 253, 248, 0.72);
+        border-radius: 3px;
+        box-shadow: 0 8px 24px rgba(75, 59, 31, 0.18);
+        cursor: pointer;
+      }
 
+      .print-button:hover {
+        background: #694009;
+      }
 
+      .document {
+        display: grid;
+        gap: 24px;
+        padding: 24px 0 48px;
+      }
 
-</style>
-</head>
-<body class='typora-export' >
-<div  id='write'  class = 'is-node'><h1><a name='header-c1170' class='md-header-anchor '></a>王帅 Java工程师</h1><h2><a name='header-c1172' class='md-header-anchor '></a>联系方式</h2><ul><li>手机：18210237734</li><li>Email：<a href='mailto:mkwork@qq.com' target='_blank' >mkwork@qq.com</a></li><li>QQ：347505880</li><li>现居：昌平区-天通苑北</li></ul><h2><a name='header-c1186' class='md-header-anchor '></a>个人信息</h2><ul><li>王帅/男/1989</li><li>大专/中原工学院</li><li>工作年限：5年半</li><li>Github: <a href='https://github.com/ws89' target='_blank' >https://github.com/ws89</a></li><li>期望月薪：面谈</li><li>期望城市：北京</li></ul><h2><a name='header-c1206' class='md-header-anchor '></a>技能清单</h2><p>API：RESTful/JSON/OAuth2.0/OpenID/HTTPS</p><p>Framework：Spring/Spring MVC/Spring Data JPA/MyBatis/Spring Boot</p><p>Server：Linux/Tomcat/Jetty/Nginx/Docker/Microservice</p><p>Data：MySQL/H2/Oracle/Redis/Elasticsearch/Flyway/Logstash</p><p>Project：Git/SVN/Maven/JUnit/Jenkins/TeamCity</p><p>Front-end：Jquery/HTML/CSS/Webix</p><p>Cloud：阿里云/UCloud/七牛/AWS SQS/微信公众号/支付宝服务窗</p><h2><a name='header-c1221' class='md-header-anchor '></a>工作经历</h2><h3><a name='header-c1222' class='md-header-anchor '></a>海易出行 （ 2016年07月 ~ 2017年03月 ）</h3><ul><li>负责制定公司前后端交互协议规范、接口规范、文档管理、代码结构分层、封装公共组件等基础服务。</li><li>带团队负责『权限系统』开发，实现所有业务系统统一用户权限管理，业务系统秒接权限功能。</li><li>带团队负责『GPS系统』开发，实现海量GPS数据完整存储与获取，提供公司车辆轨迹与实时位置监控功能。</li></ul><h3><a name='header-c1233' class='md-header-anchor '></a>养爱车 （ 2014年12月 ~ 2016年03月 ）</h3><p>公司产品『养爱车』从无到有完整参与并负责服务端接口开发。为客户端、管家端、社区端、后台系统及微信支付宝等第三方服务平台应用提供接口。期间应用过短信、app推送、支付、云存储、云通讯等第三方服务。</p><h5><a name='header-c1236' class='md-header-anchor '></a> </h5><h5><a name='header-c1237' class='md-header-anchor '></a>服务端接口</h5><blockquote><p>Spring | Spring MVC | Spring Data JPA | Nginx | Tomcat | MySQL | Docker</p><p>主要负责公司各端产品的接口开发，部分功能如下:</p><ul><li>车辆限行提醒、车辆部件评分、车辆保养手册</li><li>下单前订单预览、下单后根据服务模式异步分配管家与服务商</li><li>此卡和卡包订单下单、支付、优惠券发放</li><li>订单完成优惠券分享、订单服务流程、订单退款流程</li><li>运营推广信息推送、推送信息配置</li><li>车辆、商品、意向、限行数据、活动、服务商、APP版本等管理</li><li>财务报表统计、优惠券管理</li><li>第三方服务：七牛存储、ping++支付、容联CallCenter相关IVR接口</li></ul></blockquote><h5><a name='header-c1268' class='md-header-anchor '></a>后台管理界面</h5><blockquote><p>Webix </p><p>主要负责车辆、商品、意向、限行数据、活动、服务商、APP版本、推送配置、财务报表、接口统计等管理界面UI。</p></blockquote><h3><a name='header-c1274' class='md-header-anchor '></a>紫光同创 （ 2014年5月 ~ 2014年12月 ）</h3><h5><a name='header-c1275' class='md-header-anchor '></a>北京市知识产权局公共服务平台二期</h5><blockquote><p>Spring | Spring MVC | Hibernate | JEECG | EasyUI | Tomcat | Oracle </p><ul><li>北京市专利商品动态监控系统维护与部分bug修改。</li><li>北京市知识产权局执法管理系统中笔录管理、立案呈批、案件查看等模块功能开发。</li></ul></blockquote><h3><a name='header-c1287' class='md-header-anchor '></a>新瑞理想 （ 2013年9月 ~ 2014年5月 ）</h3><h5><a name='header-c1288' class='md-header-anchor '></a>北京华油信通科技有限公司综合办公管理平台</h5><blockquote><p>Spring | Spring MVC | Hibernate | DWZ | Tomcat | Oracle </p><p>利用公司水晶OA工具开发了运维模块下的日常巡检、会议调试、现场服务、变更处理、周期总结、安全管理、机房资源申请管理等功能。</p></blockquote><h3><a name='header-c1294' class='md-header-anchor '></a>国丰天弘 （ 2011年7月 ~ 2013年8月 ）</h3><p>在线考试系统、国丰天弘公司官网、课程资源文件管理系统、西藏职业技术学院新官网等项目开发。</p><h5><a name='header-c1297' class='md-header-anchor '></a>在线考试系统</h5><blockquote><p>Spring | Struts2 | Hibernate | JQuery | Tomcat | MySQL </p><p>负责该网站基础数据、试卷管理、题库及教学管理等模块的开发与维护。</p></blockquote><h2><a name='header-c1303' class='md-header-anchor '></a>致谢</h2><p>感谢您花时间阅读我的简历，期待能有机会和您共事。</p></div>
-</body>
+      .sheet {
+        position: relative;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        overflow: hidden;
+        background: var(--paper);
+        box-shadow: 0 22px 68px rgba(77, 60, 31, 0.14);
+      }
+
+      .sheet::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 46mm;
+        height: 2.2mm;
+        content: "";
+        background: var(--accent);
+      }
+
+      .sheet-inner {
+        padding: 13mm 14mm 12mm;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 62mm;
+        gap: 12mm;
+        padding-bottom: 4mm;
+      }
+
+      .eyebrow {
+        margin-bottom: 3mm;
+        color: var(--accent-deep);
+        font-size: 7.8pt;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+      }
+
+      h1 {
+        margin-bottom: 2mm;
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 30pt;
+        line-height: 1;
+        letter-spacing: 0.03em;
+      }
+
+      .role {
+        margin-bottom: 0;
+        color: var(--body);
+        font-size: 11.2pt;
+        font-weight: 600;
+      }
+
+      .contact-panel {
+        align-self: end;
+        padding-left: 5mm;
+        border-left: 1px solid var(--line);
+      }
+
+      .contact-list,
+      .meta-list,
+      .keyword-list,
+      .tech-list,
+      .bullet-list,
+      .education-list,
+      .highlight-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .contact-list,
+      .meta-list {
+        display: grid;
+        gap: 1.2mm;
+      }
+
+      .contact-list li,
+      .meta-list li {
+        color: var(--muted);
+        font-size: 8.5pt;
+        line-height: 1.45;
+      }
+
+      .meta-list {
+        margin-top: 2.5mm;
+        padding-top: 2.5mm;
+        border-top: 1px solid var(--line-soft);
+      }
+
+      .keyword-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.8mm 4mm;
+        margin-top: 5mm;
+      }
+
+      .keyword-list li {
+        position: relative;
+        padding-left: 2.8mm;
+        color: #68635a;
+        font-size: 8.3pt;
+        white-space: nowrap;
+      }
+
+      .keyword-list li::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1.2mm;
+        height: 1.2mm;
+        content: "";
+        background: var(--accent);
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      .section {
+        margin-top: 7mm;
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 3mm;
+        align-items: center;
+        margin-bottom: 4mm;
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 13pt;
+        line-height: 1.2;
+      }
+
+      .section-heading::after {
+        height: 1px;
+        content: "";
+        background: var(--line);
+      }
+
+      .summary {
+        margin-bottom: 0;
+        color: var(--body);
+        font-size: 9.8pt;
+        line-height: 1.72;
+      }
+
+      .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+
+      .capability {
+        padding: 3.4mm 3.8mm;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .capability h3 {
+        margin-bottom: 1.2mm;
+        color: var(--ink);
+        font-size: 9.2pt;
+        line-height: 1.4;
+      }
+
+      .capability p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 8.1pt;
+        line-height: 1.6;
+      }
+
+      .work-card {
+        display: grid;
+        grid-template-columns: 39mm minmax(0, 1fr);
+        gap: 6mm;
+        padding: 4mm 0 0;
+      }
+
+      .work-meta h3 {
+        margin-bottom: 1mm;
+        color: var(--ink);
+        font-size: 10pt;
+        line-height: 1.45;
+      }
+
+      .period,
+      .category {
+        color: var(--accent-deep);
+        font-family: Georgia, var(--sans);
+        font-size: 8.1pt;
+      }
+
+      .bullet-list {
+        display: grid;
+        gap: 1.7mm;
+      }
+
+      .bullet-list li {
+        position: relative;
+        padding-left: 3.4mm;
+        color: var(--body);
+        font-size: 8.75pt;
+        line-height: 1.62;
+      }
+
+      .bullet-list li::before {
+        position: absolute;
+        top: 0.72em;
+        left: 0;
+        width: 1.2mm;
+        height: 1px;
+        content: "";
+        background: var(--accent);
+      }
+
+      .profile-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8mm;
+        margin-top: 7mm;
+        padding-top: 5mm;
+        border-top: 1px solid var(--line);
+      }
+
+      .mini-title {
+        margin-bottom: 2.5mm;
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 10.2pt;
+      }
+
+      .education-list,
+      .highlight-list {
+        display: grid;
+        gap: 2mm;
+      }
+
+      .education-list li,
+      .highlight-list li {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 4mm;
+        color: var(--muted);
+        font-size: 8.2pt;
+      }
+
+      .education-list strong,
+      .highlight-list strong {
+        color: var(--body);
+        font-weight: 650;
+      }
+
+      .page-intro {
+        padding-bottom: 5mm;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .page-intro h2 {
+        margin-bottom: 0;
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 21pt;
+        line-height: 1.15;
+      }
+
+      .ai-projects {
+        display: grid;
+        gap: 6mm;
+        margin-top: 7mm;
+      }
+
+      .project-card {
+        padding: 5.6mm 6mm;
+        background: linear-gradient(135deg, var(--paper-soft), #fffdf8 72%);
+        border: 1px solid var(--line);
+      }
+
+      .project-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 5mm;
+        align-items: start;
+      }
+
+      .project-head h3 {
+        margin-bottom: 1mm;
+        color: var(--ink);
+        font-size: 11.6pt;
+        line-height: 1.35;
+      }
+
+      .project-role {
+        margin-bottom: 0;
+        color: var(--accent-deep);
+        font-size: 12.9pt;
+      }
+
+      .project-period {
+        color: var(--muted);
+        font-family: Georgia, var(--sans);
+        font-size: 8.1pt;
+        white-space: nowrap;
+      }
+
+      .project-description {
+        margin: 3mm 0;
+        color: var(--muted);
+        font-size: 8.55pt;
+        line-height: 1.56;
+      }
+
+      .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.4mm 3mm;
+        margin-bottom: 3.5mm;
+        padding: 2.4mm 0;
+        border-top: 1px solid var(--line-soft);
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .tech-list li {
+        color: #766d5f;
+        font-size: 7.5pt;
+        line-height: 1.35;
+      }
+
+      .tech-list li + li::before {
+        margin-right: 3mm;
+        color: #ccb98f;
+        content: "/";
+      }
+
+      .project-card .bullet-list li {
+        font-size: 8.75pt;
+        line-height: 1.58;
+      }
+
+      .project-card .project-description {
+        display: block;
+      }
+
+      .platform-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3mm;
+        margin-top: 5mm;
+      }
+
+      .compact-project {
+        padding: 3mm 3.5mm;
+        border-top: 1.2mm solid var(--accent-wash);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+
+      .compact-project.wide {
+        grid-column: 1 / -1;
+      }
+
+      .compact-project .project-head h3 {
+        font-size: 13.8pt;
+      }
+
+      .compact-project .project-role,
+      .compact-project .project-period {
+        font-size: 11.7pt;
+      }
+
+      .compact-project .project-description {
+        display: none;
+      }
+
+      .compact-project .tech-list {
+        display: none;
+      }
+
+      .compact-project .tech-list li {
+        font-size: 10.8pt;
+      }
+
+      .compact-project .bullet-list {
+        gap: 1.1mm;
+      }
+
+      .compact-project .bullet-list li {
+        font-size: 12.6pt;
+        line-height: 1.45;
+      }
+
+      .sheet:nth-child(1) .section {
+        margin-top: 5mm;
+      }
+
+      .sheet:nth-child(n + 2) .sheet-inner {
+        display: flex;
+        min-height: 297mm;
+        flex-direction: column;
+      }
+
+      .sheet:nth-child(2) .ai-projects,
+      .sheet:nth-child(3) .ai-projects,
+      .sheet:nth-child(4) .ai-projects {
+        flex: 1;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+      }
+
+      .sheet:nth-child(2) .project-card,
+      .sheet:nth-child(3) .project-card,
+      .sheet:nth-child(4) .project-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sheet:nth-child(2) .project-card .bullet-list,
+      .sheet:nth-child(3) .project-card .bullet-list,
+      .sheet:nth-child(4) .project-card .bullet-list {
+        flex: 1;
+        align-content: space-between;
+      }
+
+      .sheet:nth-child(5) .profile-footer {
+        margin-top: 5mm;
+        padding-top: 4mm;
+      }
+
+      code {
+        padding: 0;
+        color: inherit;
+        background: transparent;
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      strong {
+        color: var(--ink);
+        font-weight: 650;
+      }
+
+      @media screen and (max-width: 860px) {
+        .print-button {
+          right: 12px;
+          bottom: 12px;
+        }
+
+        .document {
+          gap: 12px;
+          padding-bottom: 18px;
+        }
+
+        .sheet {
+          width: 100%;
+          min-height: auto;
+          box-shadow: none;
+        }
+
+        .sheet-inner {
+          padding: 34px 22px 42px;
+        }
+
+        .sheet:nth-child(n + 2) .sheet-inner {
+          display: block;
+          min-height: auto;
+        }
+
+        .sheet:nth-child(2) .ai-projects,
+        .sheet:nth-child(3) .ai-projects,
+        .sheet:nth-child(4) .ai-projects {
+          grid-template-rows: none;
+        }
+
+        .hero,
+        .work-card,
+        .profile-footer,
+        .platform-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-panel {
+          padding: 18px 0 0;
+          border-top: 1px solid var(--line);
+          border-left: 0;
+        }
+
+        .capability-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .compact-project.wide {
+          grid-column: auto;
+        }
+
+        .project-head {
+          grid-template-columns: 1fr;
+          gap: 3px;
+        }
+      }
+
+      @media print {
+        @page {
+          size: A4;
+          margin: 0;
+        }
+
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          background: #fff;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+
+        .print-button {
+          display: none !important;
+        }
+
+        .document {
+          display: block;
+          padding: 0;
+        }
+
+        .sheet {
+          width: 210mm;
+          height: 297mm;
+          min-height: 297mm;
+          margin: 0;
+          overflow: hidden;
+          box-shadow: none;
+          break-after: page;
+          page-break-after: always;
+        }
+
+        .sheet:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="printResume" class="print-button" type="button">导出 PDF</button>
+
+    <main class="document">
+      <section class="sheet" aria-label="个人信息与工作经历">
+        <div class="sheet-inner">
+          <header class="hero">
+            <div>
+              <p id="headline" class="eyebrow"></p>
+              <h1 id="name"></h1>
+              <p id="role" class="role"></p>
+              <ul id="profileTags" class="keyword-list"></ul>
+            </div>
+            <aside class="contact-panel">
+              <ul id="contacts" class="contact-list"></ul>
+              <ul id="profileMeta" class="meta-list"></ul>
+            </aside>
+          </header>
+
+          <section class="section">
+            <h2 class="section-heading">个人概述</h2>
+            <p id="summary" class="summary"></p>
+          </section>
+
+          <section class="section">
+            <h2 class="section-heading">核心能力</h2>
+            <div id="capabilities" class="capability-grid"></div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-heading">工作经历</h2>
+            <div id="work"></div>
+          </section>
+
+        </div>
+      </section>
+
+      <section class="sheet" aria-label="AI 应用项目">
+        <div class="sheet-inner">
+          <header class="page-intro">
+            <h2>AI 应用项目</h2>
+          </header>
+          <div id="aiProjects" class="ai-projects"></div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-label="研发效能平台项目">
+        <div class="sheet-inner">
+          <header class="page-intro">
+            <h2>研发效能平台</h2>
+          </header>
+          <div id="devopsProjects" class="ai-projects"></div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-label="测试平台与存储服务项目">
+        <div class="sheet-inner">
+          <header class="page-intro">
+            <h2>公共服务</h2>
+          </header>
+          <div id="serviceProjects" class="ai-projects"></div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-label="消息与中间件项目">
+        <div class="sheet-inner">
+          <header class="page-intro">
+            <h2>中间件</h2>
+          </header>
+          <div id="middlewareProjects" class="ai-projects"></div>
+          <footer class="profile-footer">
+            <section>
+              <h2 class="mini-title">教育经历</h2>
+              <ul id="education" class="education-list"></ul>
+            </section>
+            <section>
+              <h2 class="mini-title">其他亮点</h2>
+              <ul id="highlights" class="highlight-list"></ul>
+            </section>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script id="resumeData" type="application/json">{"schemaVersion":"1.0.0","updatedAt":"2026-08-04","profile":{"name":"王帅","title":"AI Agent 应用工程师（Java / 全栈）","headline":"软件研发工程师 · AI 应用方向","phone":"18210237734","wechat":"同微信","email":"mkwork@qq.com","location":"优先北京，其他城市可沟通","availability":"随时到岗","tags":[{"text":"AI 应用 / Agent 工程"},{"text":"多模态 LLM"},{"text":"Codex / Cursor / Claude Code"},{"text":"Java / Python / TypeScript"},{"text":"全栈工程"},{"text":"系统架构"},{"text":"中间件 / 分布式系统"}]},"summary":"拥有 10 年+ 软件研发经验，Java 后端出身，近两年聚焦 AI 应用与 Agent 工程，可使用 Java、Python 和 TypeScript/React 完成从后端服务、模型编排到前端交互的端到端交付。长期负责技术架构设计与核心开发，先后建设统一存储、消息与 MQ 中间件、测试环境、CI/CD 以及 AI 答疑、生图和错因诊断等平台。擅长复杂业务抽象、分布式系统可靠性、多模态 LLM 应用、异步流水线、海量数据治理与线上问题闭环。","capabilities":[{"label":"AI 应用与 Agent 工程","text":"多模态 LLM、Prompt/上下文组装、意图路由、结构化输出、RAG、模型降级与异步工作流；熟悉 Langfuse 的 Prompt 管理、Trace 和效果评估链路。"},{"label":"AI Agent 研发工具","text":"实际使用 Codex、Cursor、Claude Code 辅助需求分析、代码库理解、技术方案设计、跨仓库开发、代码重构、测试补充、故障排查和文档沉淀，具备 AI 协同研发与端到端任务交付经验。"},{"label":"Java / Python 后端","text":"Java、Python、Kotlin，Spring Boot/Spring MVC、FastAPI、Dubbo/Triple、Protobuf；具备服务拆分、接口契约、任务状态机、并发与幂等设计能力。"},{"label":"全栈交付","text":"TypeScript、JavaScript、React、HTML、CSS，熟悉 SSE、WebSocket、WebView JS Bridge 和对话式 AI 产品交互，能独立打通前后端链路。"},{"label":"数据与中间件","text":"MySQL、MongoDB、Elasticsearch、Redis、RocketMQ/ONS、OSS/CDN；具备索引优化、分表治理、缓存与数据一致性、消息可靠投递实践经验。"},{"label":"平台与工程化","text":"技术架构设计、Kubernetes、Docker、Jenkins、GitLab CI/CD、Apollo、OIDC/SSO，熟悉灰度发布、失败补偿、链路观测、自动化测试与线上故障排查。"}],"work":[{"title":"高思教育 / 爱学习｜软件研发工程师","period":"2017.08 – 2026.08","tech":[],"description":"","bullets":["长期负责公司级技术平台与教育业务系统的架构设计和核心开发，覆盖需求分析、技术方案、核心编码、联调上线、监控排障和持续演进。","以 Java 后端为核心，建设统一存储、消息平台和 MQ SDK 等公司级中间件，并参与测试环境与 CI/CD 平台建设，支撑多业务线的研发与交付。","近两年转向 AI 应用与全栈开发，主导或深度参与 AI 答疑、AI 学伴、AI 生图、错因诊断与订正分析等项目，完成从模型接入、工作流编排、数据治理到 React H5 交互的端到端落地。","持续处理高并发异步任务、海量数据、多云存储、消息可靠性、服务治理和线上故障等问题，兼顾快速业务交付与长期可维护性。"]}],"projects":[{"title":"错因分析与订正诊断系统｜架构设计 / 核心开发","period":"2026.01 – 2026.08","tech":["Python","FastAPI","Dubbo Triple","MongoDB","MySQL","Elasticsearch","RocketMQ","Langfuse"],"description":"面向教育场景构建多模态 AI 分析平台，形成错因诊断（文字诊断与图片批注）、订正诊断、易错点聚类三大业务流水线。","bullets":["主导系统架构设计与核心开发，打通 4 类业务来源及 MySQL、MongoDB、Elasticsearch、OSS、RocketMQ，搭建从任务接入、异步处理到结果回传的完整链路。","设计基于 MongoDB 原子锁的多阶段任务状态机，实现多节点并发、超时回收、指数退避重试与幂等控制，支撑错因诊断、订正申诉、图片批注和消息通知独立演进。","构建多模态 LLM 分析流程，实现可分析性预检、错因分类与解释、订正正确性/有效性判断，并统一管理 4 类业务来源的题目与作答上下文。","自研坐标式图片批注能力，实现坐标归一化、空白检测、文字避让及中文/LaTeX 混排，线上累计承载约 28.8 万次；相比原 Gemini 生图方案，单次模型生成成本由约 ¥0.48 降至 ¥0.15（降低约 69%），平均耗时由 19.3 秒降至 12.9 秒（缩短约 33%）。","接入 Langfuse Prompt 管理和跨阶段 Trace，结合 Pinpoint、结构化日志与 Mongo 慢请求监控完善链路可观测性；当前 117 项自动化测试全部通过。"],"category":"AI 应用"},{"title":"AI 答疑平台｜技术架构 / 全栈开发","period":"2024.08 – 2025.12","tech":["Java","Spring Boot","Dubbo","MongoDB","React","TypeScript","多模态 LLM","Dify RAG","SSE","WebSocket","OSS"],"description":"面向学习机与教学产品构建多模态 AI 学习平台，覆盖 AI 答疑、AI 学伴和 AI 生图三大业务模块。","bullets":["设计并实现接口契约、数据服务、Spring Boot AI 接入层和 React H5 客户端四仓架构，通过 Dubbo/Triple 聚合题库、学生、聊天记录、错因及订正等内部服务，打通 App WebView、模型调用与 MongoDB/MySQL/Elasticsearch 数据层。","构建题目级 LLM 答疑编排，按题干、解析、知识点、学生信息和作答状态动态组装 Prompt，支持意图路由、多模态手写分析、Dify RAG、流式输出及模型失败切换；线上累计承载约 39.1 万次答疑会话，最近 30 天约 6.72 万次、覆盖 8,534 名学生。","基于 JS Bridge 打通学习机题目切换、手写笔、作答状态、键盘和窗口控制，以参数驱动状态机复用文字答疑、语音、学习提醒和学伴等多种交互形态。","建设答后学伴闭环，将学生作答、错因文字和批注图注入对话，支持错因反馈、订正任务防重、异步结果轮询及历史恢复；学伴累计承载约 7.3 万次会话，最近 30 天约 1.00 万次、覆盖 2,564 名学生。","从零构建对话式 AI 生图系统，支持文本/参考图、多轮调整、Prompt 润色及风格/分辨率控制；设计 OSS 与 MongoDB 会话瘦身方案，累计生成 7,562 张图片，生成耗时中位数约 15.4 秒。"],"category":"AI 应用"},{"title":"iFlow 持续交付平台｜架构设计 / 核心开发","period":"2023.09 – 2025.01","tech":["Java","Spring Boot","React","Jenkins","GitLab","Kubernetes","Docker","MySQL","Redis","WebSocket","OIDC"],"description":"面向研发与运维建设预发/生产一体化持续交付平台，将应用、迭代、Git 分支、发布审批、CI/CD 流水线、制品、部署状态和回滚纳入统一工作流，覆盖 Kubernetes 与虚机交付场景。","bullets":["负责五仓协同的持续交付平台架构设计与核心开发，打通迭代分支/MR、预发与生产审批、可视化流水线、Jenkins 构建、制品入库、Kubernetes/虚机发布、结果通知和历史制品回滚。","负责空间与制品中心核心能力，完成空间 CRUD/订阅及制品上传、下载、分页、删除、分支/模块元数据、PVC 持久化、上传限制、权限控制和操作审计，实现 CI 制品统一沉淀并支撑 CD 与回滚复用。","建设制品上传/拉取及 Kubernetes/虚机部署 Stage，适配前端、Spring Boot、Tomcat 等交付形态，通过错误中止、敏感日志收敛和 kubedog 就绪跟踪增强发布可靠性。","打通 React/xterm.js 与 Java WebSocket 实时交互链路，实现 Jenkins/Kubernetes 日志、Pod Exec、Trzsz 文件上传下载和 Terminalizer 操作留痕，提升线上排障效率与可追溯性。","建设 OIDC/SSO 登录退出链路，处理服务端拦截、前端 401 重定向、Cookie/Token、单点退出和白名单，并接入统一 SSO SDK，形成从研发流程、持续交付到运行排障的一体化平台能力。"],"category":"DevOps 平台"},{"title":"蜂巢测试多环境管理平台｜架构设计 / 核心开发","period":"2022.05 – 2024.04","tech":["Java","Spring Boot","Kubernetes","Jenkins","Nginx/OpenResty","Java Agent","Javassist","Dubbo","Zookeeper","Shell"],"description":"面向研发、测试和运维构建一站式测试环境平台，以公共环境作为共享底座、私有环境按迭代部署最小服务集合，通过 HTTP/RPC 双通道路由实现未部署服务透明回退，降低完整环境的重复建设与维护成本。","bullets":["负责公共/私有测试环境的全生命周期架构与核心开发，打通项目与分支选择、Jenkins 构建、Kubernetes 发布、服务启停、Pod/健康状态、Nginx/Zookeeper 管理及告警通知，支持快速复制和启动隔离联调环境。","设计并演进 Dubbo 跨环境 Java Agent，基于 Instrumentation、Javassist 和动态代理扫描 XML/注解服务引用，按自定义、私有、公共注册中心优先级路由，并维护服务发现缓存及 Alibaba/Apache Dubbo 制品适配，实现业务代码无侵入的服务复用。","完善 Jenkins/Kubernetes 标准化发布体系，沉淀高复用 Shell 与部署模板，降低 Jenkins 插件依赖，覆盖 Java 8/17/21、Spring Boot、Tomcat、Node.js、Python 及常用中间件，并通过 Volume/NAS 支撑配置与数据持久化。","重构 Nginx/OpenResty 跨环境访问链路，以 Lua 探测私有服务并缓存路由结果，未部署服务自动回退公共环境，同时支持免配 Hosts、CORS、WebSocket 和 SSE。","实现 OIDC/SSO 权限接入、单点退出及用户缓存，并完成 iTest、iFlow、GitLab 等研发工具集成。"],"category":"DevOps 平台"},{"title":"存储服务｜架构设计 / 核心开发","period":"2017.10 – 2022.08","tech":["Java","Spring MVC","Dubbo","MySQL","Redis","阿里云 OSS","七牛云","CDN","RocketMQ","Vue.js"],"description":"面向公司业务系统从零建设统一对象存储平台，以 Web/OpenAPI、Dubbo 服务、异步任务和管理后台四层架构，统一封装多云存储的上传、访问、热备及配置治理能力。","bullets":["主导四层系统架构设计与核心开发，统一七牛云和阿里云 OSS 的上传签名、分片上传、回调、公开/私有 URL、批量下载及短链能力，业务方无需感知底层 Bucket、鉴权与云厂商差异。","设计 BusinessKey 驱动的多 Bucket、多 CDN 动态路由，通过 MySQL 配置与 Redis 缓存管理存储可用状态、访问域名和私有读策略，支持存储切换、配置热更新及多业务隔离。","实现带版本号与摘要校验的可逆短链方案，通过 XOR、位序变换和自定义 Base62 隐藏连续 ID，解码后按 ID 直接路由分表并结合 Redis 热点缓存，实现短码防误改、历史版本兼容及稳定低成本查询。","建设 MQ 驱动的跨云热备链路，将上传回调、任务持久化、七牛/阿里云异步复制、失败重试和短信/邮件告警串联为完整闭环，提升资源可用性和故障恢复能力。","针对持续增长的文件元数据、短链和热备数据设计分表治理机制，自动巡检最大 ID、预建下一张表并按阈值切换，支撑累计约 28.2 亿条文件元数据记录；截至 2026-08，管理七牛与阿里云两侧合计约 1.01 PB 云端存储容量，覆盖七牛 16.29 亿个对象、阿里云 73 个 Bucket，阿里云 CDN 近 7 天处理 27.97 TB 流量及 1.5 亿次请求。","完善 OpenAPI/SDK/管理端分层鉴权、上传类型白名单、回调校验、私有 URL 时效及敏感信息脱敏，并持续推进依赖漏洞治理与 JDK 21、Spring Boot、Dubbo 3 升级。"],"category":"公共服务"},{"title":"消息平台（短语邮）｜架构设计 / 核心开发","period":"2018.05 – 2023.08","tech":["Java","Spring","Dubbo","RocketMQ","MySQL","Redis","Quartz","Vue.js","阿里云短信/邮件/语音"],"description":"面向公司业务系统建设短信、邮件、语音一体化消息基础设施，通过 API JAR、Dubbo 服务、HTTP 网关和管理后台提供统一接入、异步发送及运营治理，并兼容旧版消息链路。","bullets":["负责统一消息平台架构设计与核心开发，拆分 API 契约、Dubbo 执行服务、HTTP 接入和 Vue 管理端，以 RocketMQ 解耦业务请求与第三方渠道调用，统一三类消息的 Task ID 和接收人级结果查询。","设计 App Token + 模板授权的应用接入模型，并将模板、渠道账号、主备策略、MQ Queue、白名单和发送记录数据化管理，实现多业务隔离、发送权限与环境治理。","建设阿里云、漫道、创蓝短信多渠道路由，支持主渠道失败自动切换漫道补发；结合 `retryId` 源记录关联、第三方回调和定时状态补偿形成最终送达闭环。","完善 Redis 短时间消费防重、ONS 自动重试、定时任务多节点互斥、营销退订过滤及线下白名单，提升异步消息链路的可靠性、可追踪性和误发防护能力。","新旧短信链路累计沉淀约 6,748 万条接收人级发送记录，最近 30 个完整自然日合计约 30.66 万条、日均约 1.02 万条（包含渠道补发记录）。","维护旧版 MQ/Dubbo 链路兼容存量业务，并推进 Java 21、Spring/Dubbo 及 HTTP 服务 Spring Boot 化改造，支撑长期运行系统的平滑演进。"],"category":"公共服务"},{"title":"MQ 中间件 SDK｜架构设计 / 核心开发","period":"2019.02 – 2025.05","tech":["Java","阿里云 ONS/RocketMQ","Spring","Maven","Protobuf","Redis","MySQL"],"description":"面向公司业务线建设统一 MQ Java SDK，以 Maven JAR 形式发布至 Nexus，封装阿里云 ONS/RocketMQ 的消息生产、消费及可靠性治理能力，被多个业务系统复用。","bullets":["负责企业级 MQ Java SDK 架构设计与核心开发，基于 Protobuf 与注解扫描统一 Topic/Tag 路由和监听器注册，支持普通/延时消息、自定义 Key、多 Topic、同步/异步及集群/广播消费。","建设正式与灰度集群的消息隔离机制，通过 Consumer Group、Tag 后缀、消息白名单/黑名单及时间窗口，实现同一消息互斥消费，支撑业务灰度切流与安全回滚。","完善消息可靠性设计，基于 Redis 业务 Key 实现消费幂等，并以 Lua 原子 `SET NX EX` 解决 Jedis 版本兼容及中间状态问题；结合 ONS 自动重试、失败消息落库与定时补偿形成异常闭环。","推动 NameServer、消费线程、超时、重试次数及 Topic 映射配置化，并将 SDK 通过 Maven/Nexus 统一交付，降低业务线 MQ 接入和多环境迁移成本。"],"category":"中间件 SDK"}],"education":[{"school":"东北林业大学","degree":"本科","type":"","period":"2021 – 2023"},{"school":"中原工学院","degree":"大专","type":"","period":"2009 – 2011"}],"highlights":[{"label":"软件著作权","text":"AI 答疑系统、AI 生图系统。"}]}</script>
+    <script>
+      (function () {
+        "use strict";
+
+        var data = JSON.parse(document.getElementById("resumeData").textContent);
+        var aiRules = [
+          { index: 0 },
+          { index: 1 },
+        ];
+        var devopsRules = [
+          { index: 2 },
+          { index: 3 }
+        ];
+        var serviceRules = [
+          { index: 4 },
+          { index: 5 }
+        ];
+        var middlewareRules = [
+          { index: 6 }
+        ];
+
+        function escapeHtml(value) {
+          return String(value ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+        }
+
+        function inline(value) {
+          return escapeHtml(value)
+            .replace(/`([^`]+)`/g, "<code>$1</code>")
+            .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        }
+
+        function splitTitle(value) {
+          var parts = String(value).split("｜");
+          return {
+            title: parts[0] || "",
+            role: parts.slice(1).join("｜") || ""
+          };
+        }
+
+        function renderBullets(items, indexes) {
+          var selected = indexes ? indexes.map(function (index) { return items[index]; }).filter(Boolean) : items;
+          return '<ul class="bullet-list">' + selected.map(function (item) {
+            return "<li>" + inline(item) + "</li>";
+          }).join("") + "</ul>";
+        }
+
+        function renderTech(items, limit) {
+          return '<ul class="tech-list">' + items.slice(0, limit).map(function (item) {
+            return "<li>" + inline(item) + "</li>";
+          }).join("") + "</ul>";
+        }
+
+        function renderIdentity() {
+          var profile = data.profile;
+          document.title = profile.name + "｜" + profile.title + "｜投递版";
+          document.getElementById("headline").textContent = profile.headline;
+          document.getElementById("name").textContent = profile.name;
+          document.getElementById("role").textContent = profile.title;
+          document.getElementById("contacts").innerHTML = [
+            "电话 / 微信：" + profile.phone,
+            "邮箱：" + profile.email
+          ].map(function (item) { return "<li>" + inline(item) + "</li>"; }).join("");
+          document.getElementById("profileMeta").innerHTML = [
+            "期望城市：" + profile.location,
+            "到岗时间：" + profile.availability
+          ].map(function (item) { return "<li>" + inline(item) + "</li>"; }).join("");
+          document.getElementById("profileTags").innerHTML = (profile.tags || []).slice(0, 7)
+            .map(function (item) { return "<li>" + inline(item.text) + "</li>"; }).join("");
+        }
+
+        function renderProfile() {
+          document.getElementById("summary").innerHTML = inline(data.summary);
+          document.getElementById("capabilities").innerHTML = data.capabilities.map(function (item) {
+            return '<article class="capability"><h3>' + inline(item.label) + "</h3><p>" +
+              inline(item.text) + "</p></article>";
+          }).join("");
+
+          document.getElementById("work").innerHTML = data.work.map(function (item) {
+            return '<article class="work-card"><div class="work-meta"><h3>' + inline(item.title) +
+              '</h3><time class="period">' + inline(item.period) + "</time></div>" +
+              renderBullets(item.bullets) + "</article>";
+          }).join("");
+
+          document.getElementById("education").innerHTML = data.education.map(function (item) {
+            var detail = [item.degree, item.type].filter(Boolean).join(" · ");
+            return "<li><span><strong>" + inline(item.school) + "</strong> · " + inline(detail) +
+              "</span><time>" + inline(item.period) + "</time></li>";
+          }).join("");
+
+          document.getElementById("highlights").innerHTML = data.highlights.map(function (item) {
+            return "<li><span><strong>" + inline(item.label) + "</strong> · " + inline(item.text) +
+              "</span></li>";
+          }).join("");
+        }
+
+        function projectCard(rule, compact) {
+          var item = data.projects[rule.index];
+          var title = splitTitle(item.title);
+          var className = compact ? "compact-project" : "project-card";
+          if (rule.wide) className += " wide";
+          return '<article class="' + className + '"><header class="project-head"><div><h3>' +
+            inline(title.title) + '</h3></div><time class="project-period">' +
+            inline(item.period) + "</time></header>" +
+            '<p class="project-description">' + inline(item.description) + "</p>" +
+            renderTech(item.tech, compact ? 4 : 12) + renderBullets(item.bullets, rule.bullets) + "</article>";
+        }
+
+        function renderProjects() {
+          document.getElementById("aiProjects").innerHTML = aiRules.map(function (rule) {
+            return projectCard(rule, false);
+          }).join("");
+          document.getElementById("devopsProjects").innerHTML = devopsRules.map(function (rule) {
+            return projectCard(rule, false);
+          }).join("");
+          document.getElementById("serviceProjects").innerHTML = serviceRules.map(function (rule) {
+            return projectCard(rule, false);
+          }).join("");
+          document.getElementById("middlewareProjects").innerHTML = middlewareRules.map(function (rule) {
+            return projectCard(rule, false);
+          }).join("");
+        }
+
+        renderIdentity();
+        renderProfile();
+        renderProjects();
+
+        document.getElementById("printResume").addEventListener("click", function () {
+          window.print();
+        });
+      })();
+    </script>
+  </body>
 </html>
